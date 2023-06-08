@@ -18,23 +18,46 @@ public class FibonacciServletTest {
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
 
-        // Mock the request parameter
+        // Test Case 1: Fibonacci number at position 6
         when(request.getParameter("n")).thenReturn("6");
-
-        // Create a StringWriter to capture the response content
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
 
-        // Invoke the servlet's doGet method
         servlet.doGet(request, response);
 
-        // Flush the writer and capture the written content
         writer.flush();
         String responseContent = stringWriter.toString();
 
-        // Verify the response content
         String expectedContent = "The Fibonacci number at position 6 is: 8";
+        assertEquals(expectedContent, responseContent);
+
+        // Test Case 2: Fibonacci number at position 0
+        when(request.getParameter("n")).thenReturn("0");
+        stringWriter = new StringWriter();
+        writer = new PrintWriter(stringWriter);
+        when(response.getWriter()).thenReturn(writer);
+
+        servlet.doGet(request, response);
+
+        writer.flush();
+        responseContent = stringWriter.toString();
+
+        expectedContent = "The Fibonacci number at position 0 is: 0";
+        assertEquals(expectedContent, responseContent);
+
+        // Test Case 3: Fibonacci number at position 10
+        when(request.getParameter("n")).thenReturn("10");
+        stringWriter = new StringWriter();
+        writer = new PrintWriter(stringWriter);
+        when(response.getWriter()).thenReturn(writer);
+
+        servlet.doGet(request, response);
+
+        writer.flush();
+        responseContent = stringWriter.toString();
+
+        expectedContent = "The Fibonacci number at position 10 is: 55";
         assertEquals(expectedContent, responseContent);
     }
 }
