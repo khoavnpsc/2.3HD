@@ -28,6 +28,7 @@ public class FibonacciServlet extends HttpServlet {
         }
     }
 
+
     private static int calculateFibonacci(int n) {
         if (n <= 1) {
             return n;
