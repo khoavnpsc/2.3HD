@@ -9,11 +9,11 @@ pipeline {
             }
         }
         
-        stage("Unit and Integration Tests") {
+        stage("Unit Tests") {
             steps {
-                echo "Unit and Integration testing using JUnit"
+                echo "Unit testing using JUnit"
                 bat "mvn test"
-                echo "Unit and Integration test complete"
+                echo "Unit test complete"
             }
         }
         
