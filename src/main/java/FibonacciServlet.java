@@ -6,28 +6,15 @@ import javax.servlet.http.HttpServletResponse;
 
 public class FibonacciServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String positionStr = request.getParameter("n");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-        try {
-            int n = Integer.parseInt(positionStr);
-            int result = calculateFibonacci(n);
+        int n = Integer.parseInt(request.getParameter("n"));
+        int result = calculateFibonacci(n);
 
-            response.setContentType("text/plain");
-            response.getWriter().write("The Fibonacci number at position " + n + " is: " + result);
-        } catch (NumberFormatException e) {
-            // Handle NumberFormatException
-            response.setContentType("text/plain");
-            response.getWriter().write("Invalid input. Please provide a valid integer value for 'n'.");
-        } catch (IOException e) {
-            // Handle IOException
-            // Log the exception or show an appropriate error message
-            e.printStackTrace();
-            response.setContentType("text/plain");
-            response.getWriter().write("An error occurred while processing the request.");
-        }
+        response.setContentType("text/plain");
+        response.getWriter().write("The Fibonacci number at position " + n + " is: " + result);
     }
-
 
     private static int calculateFibonacci(int n) {
         if (n <= 1) {
