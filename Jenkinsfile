@@ -42,8 +42,6 @@ pipeline {
                     bat "docker login -u khoavnpsc -p ${dockerhubpwd}"
                     bat "docker tag fibonacci-app khoavnpsc/fibonacci-app:latest"
                     bat "docker push khoavnpsc/fibonacci-app:latest"
-                    bat "docker-compose down"
-                    bat "docker-compose up -d --force-recreate"
                     echo "Image pushed to Dockerhub successfully"
                 }
             }
