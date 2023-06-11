@@ -58,17 +58,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            publishHTML(target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'C:\\Users\\khoav\\OneDrive\\Desktop',
-                reportFiles: 'screenshot_*.png',
-                reportName: 'Screenshots'
-            ])
-        }
-    }
 }
