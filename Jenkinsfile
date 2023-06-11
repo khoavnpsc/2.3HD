@@ -57,5 +57,18 @@ pipeline {
                 echo "Deploy completed"
             }
         }
+
+        post {
+            always {
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'screenshots',
+                    reportFiles: 'screenshot_*.png',
+                    reportName: 'Screenshots'
+                ])
+            }
+        }
     }
 }
