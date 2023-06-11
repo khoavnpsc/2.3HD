@@ -58,14 +58,14 @@ pipeline {
             }
         }
     }
-    
+
     post {
         always {
             publishHTML(target: [
                 allowMissing: false,
                 alwaysLinkToLastBuild: false,
                 keepAll: true,
-                reportDir: 'screenshots',
+                reportDir: 'C:\\Users\\khoav\\OneDrive\\Desktop',
                 reportFiles: 'screenshot_*.png',
                 reportName: 'Screenshots'
             ])
